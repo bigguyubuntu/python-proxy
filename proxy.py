@@ -71,7 +71,7 @@ def extract_host_port_from_request(request):
 def start_proxy_server():
     # port = 8888
     # for the hosting platform, it's int he port env
-    port = os.environ['PORT']
+    port = int(os.environ['PORT'])
     # bind the proxy server to a specific address and port
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # server.bind(('127.0.0.1', port))
