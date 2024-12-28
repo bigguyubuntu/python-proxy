@@ -1,5 +1,6 @@
 import socket
 import threading
+import os
 
 def handle_client_request(client_socket):
     print("Received request:\n")
@@ -68,10 +69,13 @@ def extract_host_port_from_request(request):
     return host, port
 
 def start_proxy_server():
-    port = 8888
+    # port = 8888
+    # for the hosting platform, it's int he port env
+    port = os.environ['PORT']
     # bind the proxy server to a specific address and port
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('127.0.0.1', port))
+    # server.bind(('127.0.0.1', port))
+    server.bind(('0.0.0.0', port))
     # accept up to 10 simultaneous connections
     server.listen(10)
     print(f"Proxy server listening on port {port}...")
