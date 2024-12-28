@@ -60,7 +60,7 @@ def extract_host_port_from_request(request):
     # no port specified
     if port_pos == -1 or webserver_pos < port_pos:
         # default port
-        port = 80
+        port = 443 #80
         host = host_string[:webserver_pos]
     else:
         # extract the specific port from the host string
